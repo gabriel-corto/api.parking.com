@@ -1,0 +1,2 @@
+dev:
+	./gradlew bootRun -t
