@@ -1,18 +1,19 @@
-package com.api.parking.infra.database;
+package com.api.parking.infra.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.api.parking.domain.SpotStatus;
+
 import com.api.parking.infra.jpa.JpaSpotRepository;
 import com.api.parking.infra.jpa.SpotModel;
 
 @Component
-public class DataSeeder implements CommandLineRunner {
+public class DataBaseSeeder implements CommandLineRunner {
 
     private final JpaSpotRepository jpaSpotRepository;
 
-    public DataSeeder(JpaSpotRepository jpaSpotRepository) {
+    public DataBaseSeeder(JpaSpotRepository jpaSpotRepository) {
         this.jpaSpotRepository = jpaSpotRepository;
     }
 

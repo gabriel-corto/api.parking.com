@@ -1,4 +1,4 @@
-package com.api.parking.infra.database;
+package com.api.parking.infra.postgresql;
 
 
 import com.api.parking.domain.Ticket;
@@ -12,7 +12,8 @@ public class PostgreSQLTicketMapper {
       ticketModel.getId(),
       new VehicleBoard(ticketModel.getVehicleBoard()),
       ticketModel.getSpotId(),
-      ticketModel.getEntryTime()
+      ticketModel.getEntryTime(),
+      ticketModel.getStatus()
     );
   }
 
@@ -23,7 +24,8 @@ public class PostgreSQLTicketMapper {
     ticketModel.setVehicleBoard(ticket.getVehicleBoard().getValue());
     ticketModel.setSpotId(ticket.getSpotId());
     ticketModel.setEntryTime(ticket.getEntryTime());
-    
+    ticketModel.setStatus(ticket.getStatus());
+
     return ticketModel;
   }
 }

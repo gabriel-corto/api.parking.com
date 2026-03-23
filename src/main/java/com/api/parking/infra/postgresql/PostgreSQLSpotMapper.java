@@ -1,4 +1,4 @@
-package com.api.parking.infra.database;
+package com.api.parking.infra.postgresql;
 
 import com.api.parking.domain.Spot;
 import com.api.parking.infra.jpa.SpotModel;

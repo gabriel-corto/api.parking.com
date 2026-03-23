@@ -1,5 +1,6 @@
-package com.api.parking.infra.database;
+package com.api.parking.infra.postgresql;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
@@ -21,12 +22,28 @@ public class PostgreSQLSpotRepository implements SpotRepository {
   }
 
   @Override
+  public List<Spot> findAll() {
+    return this.jpaSpotRepository.findAll()
+      .stream()
+        .map(s -> PostgreSQLSpotMapper.toDomain(s)).toList();
+  }
+
+  @Override
   public Optional<Spot> findAvailableSpot() {
     return this.jpaSpotRepository.findAll()
-        .stream()
+      .stream()
         .filter(s -> s.getStatus() == SpotStatus.AVAILABLE)
-        .findFirst()
-        .map(s -> PostgreSQLSpotMapper.toDomain(s));
+          .findFirst()
+            .map(s -> PostgreSQLSpotMapper.toDomain(s));
+  }
+
+  @Override
+  public List<Spot> findAvailablesSpot() {
+    return this.jpaSpotRepository.findAll()
+      .stream()
+        .filter(s -> s.getStatus() == SpotStatus.AVAILABLE)
+          .map(s -> PostgreSQLSpotMapper.toDomain(s))
+            .toList();
   }
 
   @Override

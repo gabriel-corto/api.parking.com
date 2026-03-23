@@ -20,8 +20,17 @@ public class InMemorySpotRepository implements SpotRepository {
   }
 
   @Override
+  public List<Spot> findAvailablesSpot() {
+    return this.spots.stream().toList();
+  }
+
+  @Override
+  public List<Spot> findAll() {
+    return this.spots.stream().toList();
+  }
+
+  @Override
   public void save(Spot spot) {
     this.spots.add(spot);
-    
   }
 }
