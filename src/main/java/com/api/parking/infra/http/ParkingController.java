@@ -2,10 +2,13 @@ package com.api.parking.infra.http;
 
 import java.util.List;
 
+import com.api.parking.domain.CheckOutResponse;
 import com.api.parking.domain.Spot;
 
 import com.api.parking.application.CheckInRequest;
 import com.api.parking.application.CheckInUseCase;
+import com.api.parking.application.CheckOutRequest;
+import com.api.parking.application.CheckOutUseCase;
 import com.api.parking.application.GetActivesVehicleUseCase;
 import com.api.parking.application.GetAvailablesSpotUseCase;
 import com.api.parking.application.GetParkingHistoryUseCase;
@@ -18,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -26,7 +28,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/parking")
 public class ParkingController {
   private final CheckInUseCase checkInUseCase;
+  private final CheckOutUseCase checkoutUseCase;
   private final GetSpostsUseCase getSpostsUseCase;
+
   private final GetAvailablesSpotUseCase getAvailablesSpotUseCase;
   private final GetParkingHistoryUseCase getParkingHistoryUseCase;
   private final GetActivesVehicleUseCase getActivesVehiclesUseCase;
@@ -34,13 +38,17 @@ public class ParkingController {
   public ParkingController
   (
     CheckInUseCase checkInUseCase, 
+    CheckOutUseCase checkoutUseCase,
     GetSpostsUseCase getSpostsUseCase,
+    
     GetAvailablesSpotUseCase getAvailablesSpotUseCase, 
     GetActivesVehicleUseCase getActivesVehicleUseCase,
     GetParkingHistoryUseCase getParkingHistoryUseCase
   ) {
     this.checkInUseCase = checkInUseCase;
+    this.checkoutUseCase = checkoutUseCase;
     this.getSpostsUseCase = getSpostsUseCase;
+
     this.getAvailablesSpotUseCase = getAvailablesSpotUseCase;
     this.getActivesVehiclesUseCase = getActivesVehicleUseCase;
     this.getParkingHistoryUseCase = getParkingHistoryUseCase;
@@ -90,6 +98,7 @@ public class ParkingController {
   public ResponseEntity<TicketResponse> checkIn(@RequestBody CheckInDto body) {
     var request = new CheckInRequest(body.vehicleBoard());
     var ticket = this.checkInUseCase.execute(request);
+
     
     return ResponseEntity.ok(
       new TicketResponse(
@@ -101,5 +110,11 @@ public class ParkingController {
       )   
     );
   }
-  
+
+  @PostMapping("/check-out")
+  public ResponseEntity<CheckOutResponse> checkout(@RequestBody CheckOutDto body) {
+    var request = new CheckOutRequest(body.vehicleBoard(), body.ticketId());
+    var response = this.checkoutUseCase.execute(request);
+    return ResponseEntity.ok(response);
+  }
 }

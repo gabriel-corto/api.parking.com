@@ -27,7 +27,7 @@ public class Ticket {
     this.spotId = spotId;
     this.entryTime = entryTime;
     this.vehicleBoard = vehicleBoard;
-    this.status = TicketStatus.ACTIVE;
+    this.status = status;
   }
 
   public static Ticket create(VehicleBoard vehicleBoard, Integer spotId) {
@@ -43,6 +43,14 @@ public class Ticket {
     TicketStatus status
   ) {
     return new Ticket(id, vehicleBoard, spotId, entryTime, status);
+  }
+
+  public void active() {
+    this.status = TicketStatus.ACTIVE;
+  }
+
+  public void close() {
+    this.status = TicketStatus.CLOSED;
   }
     
 }

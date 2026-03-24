@@ -47,6 +47,12 @@ public class PostgreSQLSpotRepository implements SpotRepository {
   }
 
   @Override
+  public Optional<Spot> findById(Integer id) {
+    var spot = this.jpaSpotRepository.findById(id).map(s -> PostgreSQLSpotMapper.toDomain(s));
+    return spot;
+  }
+
+  @Override
   public void save(Spot spot) {
     var spotModel = PostgreSQLSpotMapper.toJpaModel(spot);
     this.jpaSpotRepository.save(spotModel);

@@ -5,10 +5,10 @@ import com.api.parking.infra.jpa.SpotModel;
 
 public class PostgreSQLSpotMapper {
   static Spot toDomain(SpotModel spotModel) {
-    var spot = new Spot();
-    spot.setId(spotModel.getId());
-    spot.setStatus(spotModel.getStatus());
-    return spot;
+    return Spot.restore(
+      spotModel.getId(), 
+      spotModel.getStatus()
+    );
   }
 
   static SpotModel toJpaModel(Spot spot) {

@@ -30,6 +30,11 @@ public class InMemorySpotRepository implements SpotRepository {
   }
 
   @Override
+  public Optional<Spot> findById(Integer id) {
+    return this.spots.stream().filter(s -> s.getId() == id).findFirst();
+  }
+
+  @Override
   public void save(Spot spot) {
     this.spots.add(spot);
   }
