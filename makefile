@@ -2,7 +2,7 @@ up:
 	docker compose up --build
 
 dev:
-	./gradlew bootRun -t
+	./gradlew bootRun -Dspring.profiles.active=dev
 
 test:
 	./gradlew test
