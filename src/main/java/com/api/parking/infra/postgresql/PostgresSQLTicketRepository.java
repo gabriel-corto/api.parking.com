@@ -3,6 +3,7 @@ package com.api.parking.infra.postgresql;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.api.parking.domain.Ticket;
@@ -12,6 +13,7 @@ import com.api.parking.domain.VehicleBoard;
 import com.api.parking.infra.jpa.JpaTicketRepository;
 
 @Repository
+@Primary
 public class PostgresSQLTicketRepository implements TicketRepository {
   private final JpaTicketRepository jpaTicketRepository;
 

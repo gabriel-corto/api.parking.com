@@ -29,7 +29,6 @@ public class CheckOutUseCase {
   }
 
   public CheckOutResponse execute(CheckOutRequest checkoutRequest) {
-
     var board = new VehicleBoard(checkoutRequest.vehicleBoard());
     var ticket = this.ticketRepository.findByVehiceBoard(board);
 

@@ -14,8 +14,8 @@ public class Spot {
     this.status = status;
   }
 
-  public static Spot create() {
-    return new Spot(Math.incrementExact(1), SpotStatus.AVAILABLE);
+  public static Spot create(Integer id) {
+    return new Spot(id, SpotStatus.AVAILABLE);
   }
 
   public static Spot restore(Integer id, SpotStatus status) {
