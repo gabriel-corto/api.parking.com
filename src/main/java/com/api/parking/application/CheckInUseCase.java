@@ -27,7 +27,7 @@ public class CheckInUseCase {
     var vehicleAlreadyParked = ticketRepository.findByVehiceBoard(vehicle.getBoard());
 
     if(vehicleAlreadyParked.isPresent()) {
-      throw new VehicleAlreadyParkedException("O Veículo " + vehicle.getBoard().getValue() + " Já Está Estacionado!");
+      throw new VehicleAlreadyParkedException();
     }
 
     if(availableSpot.isEmpty()) {

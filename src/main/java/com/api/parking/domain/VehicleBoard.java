@@ -16,7 +16,7 @@ public class VehicleBoard {
 
   private void validateVehicleBoard(String value) {
     if (value == null || !value.matches(VEHICLE_REGEX)) {
-      throw new InvalidVehicleBoardException(value);
+      throw new InvalidVehicleBoardException();
     }
   }
 }

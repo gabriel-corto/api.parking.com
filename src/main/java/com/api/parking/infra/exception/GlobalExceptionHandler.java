@@ -16,12 +16,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DomainError.class)
     public ResponseEntity<Map<String, Object>> handleDomainError(DomainError ex) {
+        HttpStatus status = ex.getStatus();
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
-        body.put("status", HttpStatus.UNPROCESSABLE_CONTENT.value());
-        body.put("error", "Unprocessable Entity");
+        body.put("status", status.value());
+        body.put("error", status.getReasonPhrase());
         body.put("message", ex.getMessage());
 
-        return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_CONTENT);
+        return new ResponseEntity<>(body, status);
     }
 }
