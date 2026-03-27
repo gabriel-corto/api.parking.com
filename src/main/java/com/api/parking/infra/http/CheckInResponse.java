@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import com.api.parking.domain.TicketStatus;
 
-public record TicketResponse(
+public record CheckInResponse(
   UUID id,
   TicketStatus status,
   String vehicleBoard, 

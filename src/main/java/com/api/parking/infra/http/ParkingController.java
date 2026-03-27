@@ -2,7 +2,6 @@ package com.api.parking.infra.http;
 
 import java.util.List;
 
-import com.api.parking.domain.CheckOutResponse;
 import com.api.parking.domain.Spot;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -92,11 +91,11 @@ public class ParkingController {
     @ApiResponse(responseCode = "200", description = "Lista de veículos ativos"),
   })
   @GetMapping("/active")
-  public ResponseEntity<List<TicketResponse>> getActivesVehicles() {
+  public ResponseEntity<List<CheckInResponse>> getActivesVehicles() {
     var tickets = this.getActivesVehiclesUseCase.execute();
     return ResponseEntity.ok(
       tickets.stream()
-        .map(ticket -> new TicketResponse(
+        .map(ticket -> new CheckInResponse(
           ticket.getId(), 
           ticket.getStatus(), 
           ticket.getVehicleBoard().getValue(), 
@@ -113,11 +112,11 @@ public class ParkingController {
     @ApiResponse(responseCode = "200", description = "Lista de veículos ativos"),
   })
   @GetMapping("/history")
-  public ResponseEntity<List<TicketResponse>> getParkingHistory() {
+  public ResponseEntity<List<CheckInResponse>> getParkingHistory() {
     var tickets = this.getParkingHistoryUseCase.execute();
     return ResponseEntity.ok(
       tickets.stream()
-        .map(ticket -> new TicketResponse(
+        .map(ticket -> new CheckInResponse(
           ticket.getId(), 
           ticket.getStatus(), 
           ticket.getVehicleBoard().getValue(), 
@@ -134,13 +133,13 @@ public class ParkingController {
     @ApiResponse(responseCode = "200", description = "Check-in realizado com sucesso"),
   })
   @PostMapping("/check-in")
-  public ResponseEntity<TicketResponse> checkIn(@RequestBody CheckInDto body) {
+  public ResponseEntity<CheckInResponse> checkIn(@RequestBody CheckInDto body) {
     var request = new CheckInRequest(body.vehicleBoard());
     var ticket = this.checkInUseCase.execute(request);
 
     
     return ResponseEntity.ok(
-      new TicketResponse(
+      new CheckInResponse(
         ticket.getId(), 
         ticket.getStatus(), 
         ticket.getVehicleBoard().getValue(), 

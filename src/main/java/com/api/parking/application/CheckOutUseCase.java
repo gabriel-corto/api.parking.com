@@ -15,8 +15,7 @@ import com.api.parking.domain.VehicleBoard;
 import com.api.parking.domain.exceptions.NotFoundSpotException;
 import com.api.parking.domain.exceptions.NotFoundTicketException;
 import com.api.parking.domain.exceptions.TicketAlreadyClosedException;
-
-import com.api.parking.domain.CheckOutResponse;
+import com.api.parking.infra.http.CheckOutResponse;
 
 @Service
 public class CheckOutUseCase {
@@ -70,3 +69,4 @@ public class CheckOutUseCase {
     );
   }
 }
+ 

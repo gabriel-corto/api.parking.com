@@ -35,6 +35,8 @@ Esta API fornece um conjunto de endpoints REST para automatizar as operações d
 
 ### Como Executar?
 
+#### Local (Docker)
+
 Para iniciar a aplicação e o banco de dados simultaneamente, utilize o comando:
 
 ```bash
@@ -43,6 +45,15 @@ docker compose up --build
 
 A API estará disponível em `http://localhost:8080`
 
+#### Produção
+
+A API também está disponível no ambiente de produção:
+
+- URL: `https://api-parking-com.onrender.com`
+
 ### Documentação
 
-A documentação da API está disponível em `http://localhost:8080/swagger-ui.html`
+A documentação interativa (Swagger UI) está disponível em:
+
+- **Local:** `http://localhost:8080/swagger-ui.html`
+- **Produção:** [https://api-parking-com.onrender.com/swagger-ui.html](https://api-parking-com.onrender.com/swagger-ui.html)

@@ -1,4 +1,4 @@
-package com.api.parking.domain;
+package com.api.parking.infra.http;
 
 import java.util.UUID;
 
