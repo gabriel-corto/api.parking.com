@@ -57,15 +57,17 @@ public class CheckOutUseCase {
 
     Duration totalPassedTimes = Duration.between(checkInTime, checkOutTime);
     long totalPassedHours = totalPassedTimes.toHours();
+    long parsedTotalPassedHour = totalPassedHours == 0 ? 1 : totalPassedHours;
 
-    var totalParking = Invoice.issueParkingPrice(totalPassedHours);
+
+    var totalParking = Invoice.issueParkingPrice(parsedTotalPassedHour);
 
     return new CheckOutResponse(
       ticket.get().getId(), 
       board.getValue(), 
       spotId, 
       totalParking, 
-      totalPassedHours
+      parsedTotalPassedHour
     );
   }
 }

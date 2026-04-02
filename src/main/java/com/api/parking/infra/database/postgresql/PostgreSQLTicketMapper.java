@@ -1,5 +1,4 @@
-package com.api.parking.infra.postgresql;
-
+package com.api.parking.infra.database.postgresql;
 
 import com.api.parking.domain.Ticket;
 import com.api.parking.domain.VehicleBoard;

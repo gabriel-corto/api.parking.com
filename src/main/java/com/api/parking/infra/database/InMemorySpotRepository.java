@@ -1,4 +1,4 @@
-package com.api.parking.infra;
+package com.api.parking.infra.database;
 
 import java.util.ArrayList;
 import java.util.List;

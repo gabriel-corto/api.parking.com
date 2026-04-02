@@ -1,4 +1,4 @@
-package com.api.parking.infra.http;
+package com.api.parking.infra.http.dto;
 
 
 import jakarta.validation.constraints.Null;

@@ -1,4 +1,4 @@
-package com.api.parking.infra.postgresql;
+package com.api.parking.infra.database.postgresql;
 
 import java.util.List;
 import java.util.Optional;

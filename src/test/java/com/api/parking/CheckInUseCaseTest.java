@@ -9,8 +9,8 @@ import com.api.parking.application.CheckInRequest;
 import com.api.parking.application.CheckInUseCase;
 import com.api.parking.domain.Spot;
 import com.api.parking.domain.TicketStatus;
-import com.api.parking.infra.InMemorySpotRepository;
-import com.api.parking.infra.InMemoryTicketRepository;
+import com.api.parking.infra.database.InMemorySpotRepository;
+import com.api.parking.infra.database.InMemoryTicketRepository;
 
 public class CheckInUseCaseTest {
   @Test

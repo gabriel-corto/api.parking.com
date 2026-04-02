@@ -1,8 +1,12 @@
-package com.api.parking.infra.http;
+package com.api.parking.infra.http.controllers;
 
 import java.util.List;
 
 import com.api.parking.domain.Spot;
+import com.api.parking.infra.http.CheckInResponse;
+import com.api.parking.infra.http.CheckOutResponse;
+import com.api.parking.infra.http.dto.CheckInDto;
+import com.api.parking.infra.http.dto.CheckOutDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
